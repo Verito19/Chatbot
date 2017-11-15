@@ -1,0 +1,19 @@
+{
+  "name": "chatbot",
+  "version": "1.0.0",
+  "description": "Chatbot",
+  "main": " app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Verito19/Chatbot.git"
+  },
+  "author": "Veronica Toasa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Verito19/Chatbot/issues"
+  },
+  "homepage": "https://github.com/Verito19/Chatbot#readme"
+}

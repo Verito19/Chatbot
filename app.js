@@ -331,10 +331,10 @@ request.on('response', function(response) {
     console.log(response);
 
       if (response) {
-        conts result=response.result
+        conts result=response.result;
         if (result) {
           conts fulfillment=result.fulfillment;
-          if (fulfillment&&fulfillment.speech&&fulfillment.speech.length) {
+          if (fulfillment&&fulfillment.speech&&fulfillment.speech.length >0) {
             sendTextMessage(senderID, fulfillment.speech);
         }
 

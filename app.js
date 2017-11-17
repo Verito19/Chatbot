@@ -314,34 +314,31 @@ function handleMessage(currentUser, senderID, message, isEcho, messageId, appId,
       getUsername(senderID);
     }
     else {
-      senToBot(senderID, messageText);
-    }
-  }
-  else if (messageAttachments) {
-    sendTextMessage(senderID, "Message with attachment received");
-  }
-}
-
-function senToBot(senderID, message){
-  var request = bot.textRequest(message, {
-    sessionId: senderID
-});
-
-request.on('response', function(response) {
-    console.log(response);
-
-      if (response) {
-        conts result=response.result;
-        if (result) {
-          conts fulfillment=result.fulfillment;
-          if (fulfillment&&fulfillment.speech&&fulfillment.speech.length >0) {
-            sendTextMessage(senderID, fulfillment.speech);
-        }
-
+      sendToBOT(senderID, messageText);
       }
-
     }
-});
+    else if (messageAttachments) {
+      sendTextMessage(senderID, "Message with attachment received");
+    }
+  }
+
+  function sendToBOT(senderID, message) {
+    var request = bot.textRequest('<Your text query>', {
+      sessionId: '<unique session id>'
+  });
+
+  request.on('response', function(response) {
+      console.log(response);
+      if(response){
+        const result= response.result;
+        if(result){
+          const fulfillment = result.fulfillment;
+          if(fulfillment && fulfillment.speech && fulfillment.speech.length >0){
+          sendTextMessage(senderID, fulfillment.speech);
+          }
+        }
+      }
+  });
 
 request.on('error', function(error) {
     console.log(error);

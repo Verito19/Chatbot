@@ -321,24 +321,39 @@ function handleMessage(currentUser, senderID, message, isEcho, messageId, appId,
       sendTextMessage(senderID, "Message with attachment received");
     }
   }
-
   function sendToBOT(senderID, message) {
     var request = bot.textRequest('<Your text query>', {
       sessionId: '<unique session id>'
   });
-
   request.on('response', function(response) {
-      console.log(response);
-      if(response){
-        const result= response.result;
-        if(result){
-          const fulfillment = result.fulfillment;
-          if(fulfillment && fulfillment.speech && fulfillment.speech.length >0){
-          sendTextMessage(senderID, fulfillment.speech);
+        console.log(response);
+        if(response){
+          const result = response.result;
+          if(result){
+            const fulfillment =result.fulfillment;
+            if(fulfillment&&fulfillment.speech&&fulfillment.speech.length > 0){
+              sendTextMessage(senderID, fulfillment.speech);
+            }
+            else{
+              const action =result.action;
+              const parameters =result.action;
+              console.log('action: ',action);
+              console.log('parameters: ', parameters);
+              switch(action){
+                case 'account.balance':
+                sendTextMessage(senderID, 'get account balance');
+                break;
+                case 'account.movement':
+                sendTextMessage(senderID, 'get account movement');
+                break;
+                default:
+                console.log('unknown action...');
+                break;
+              }
+            }
           }
         }
-      }
-  });
+    });
 
 request.on('error', function(error) {
     console.log(error);

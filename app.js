@@ -322,6 +322,33 @@ function handleMessage(currentUser, senderID, message, isEcho, messageId, appId,
   }
 }
 
+function senToBot(senderID, message){
+  var request = bot.textRequest('<Your text query>', {
+    sessionId: '<unique session id>'
+});
+
+request.on('response', function(response) {
+    console.log(response);
+
+      if (response) {
+        conts result=response.result
+        if (result) {
+          conts fulfillment=result.fulfillment;
+          if (fulfillment&&fulfillment.speech&&fulfillment.speech.length) {
+            sendTextMessage(senderID, fulfillment.speech);
+        }
+
+      }
+
+    }
+});
+
+request.on('error', function(error) {
+    console.log(error);
+});
+
+request.end();
+}
 function showMenu(senderID) {
   var messageData = {
     recipient: {

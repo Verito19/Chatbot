@@ -1,22 +1,22 @@
 {
-  "name": "chatbot",
+  "name": "samplebot",
   "version": "1.0.0",
   "description": "Chatbot",
-  "main": " app.js",
+  "main": "app.js",
   "scripts": {
-    "start":"node app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Verito19/Chatbot.git"
+    "url": "git+https://github.com/fakerabbit/samplebot.git"
   },
-  "author": "Veronica Toasa",
+  "author": "Mirko Justiniano",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Verito19/Chatbot/issues"
+    "url": "https://github.com/fakerabbit/samplebot/issues"
   },
-  "homepage": "https://github.com/Verito19/Chatbot#readme",
+  "homepage": "https://github.com/fakerabbit/samplebot#readme",
   "dependencies": {
     "apiai": "^4.0.3",
     "body-parser": "^1.18.2",
